@@ -23,7 +23,7 @@ gulp.task('default', function() {
       .on('error', gutil.log.bind(gutil, 'Browserify Error'))
       .pipe(source('main.js'))
       .pipe(gulp.dest('./'));
-  };
-  build()
-  bundler.on('update', build)
+  }
+  build();
+  bundler.on('update', build);
 });
