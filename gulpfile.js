@@ -17,7 +17,7 @@ gulp.task('default', function() {
   }));
 
   function build(file) {
-    if (file) gtuil.log('Recompiling ' + file);
+    if (file) gutil.log('Recompiling ' + file);
     return bundler
       .bundle()
       .on('error', gutil.log.bind(gutil, 'Browserify Error'))

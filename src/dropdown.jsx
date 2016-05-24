@@ -14,11 +14,18 @@ module.exports = React.createClass({
     return { open: false }
   },
   handleItemClick: function(item) {
-    console.log(item)
+    this.setState({
+      open: false,
+      itemTitle: item
+    })
   },
   render: function() {
     var list = this.props.items.map(function(item){
-      return <ListItem item={item} whenItemClicked={this.handleItemClick} />
+      return <ListItem
+             item={item}
+             whenItemClicked={this.handleItemClick}
+             className={this.state.itemTitle === item ? "active" : "" }
+             />
     }.bind(this));
 
 
@@ -26,7 +33,7 @@ module.exports = React.createClass({
       <Button
         whenClicked={this.handleClick}
         className="btn-default"
-        title={this.props.title}
+        title={this.state.itemTitle || this.props.title}
         subTitleClassName="caret"
         />
       <ul className={"dropdown-menu " + (this.state.open ? "show" : "") }>
